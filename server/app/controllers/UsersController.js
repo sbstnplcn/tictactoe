@@ -3,7 +3,6 @@ let Controller = require('./Controller')
 let jwt = require('jsonwebtoken')
 const ENV = require('../../config/env')
 const USER = require('../models/user')
-const INFO = require('../models/info')
 
 class UsersController extends Controller {
 
@@ -12,10 +11,7 @@ class UsersController extends Controller {
     }
 
     findById(req,res, next){
-      this.model.findById(req.params.id).populate({
-        path: 'infos',
-        populate:({path: 'users', populate:{ path: 'infos'}})
-        }).exec((err, document)=>{
+      this.model.findById(req.params.id).exec((err, document)=>{
         if (err) next(err)
         else res.json(document)
       })
