@@ -13,7 +13,7 @@ class UsersController extends Controller {
         this.io.on('connection', (socket) => {
             this._onConnection(socket)
         });
-        let nsp = io.of('/');
+        let nsp = io.of('/tictactoe');
         nsp.on('connection', (socket) => {
             this._onSpace(socket)
             numClients++;

@@ -44,7 +44,7 @@ exports.config = {
                     'node_modules/angular-ui-router/release/angular-ui-router.min.js',
                     'node_modules/angular-cookies/angular-cookies.min.js',
                     'node_modules/socket.io/lib/socket.js',
-                    'node_modules/socket.io-client/dist/socket.io.js'
+                    'node_modules/socket.io-client/dist/socket.io.min.js'
             ],
             "css":'node_modules/bootstrap/dist/css/bootstrap.min.css',
             verbose: true,

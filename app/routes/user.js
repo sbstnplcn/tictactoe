@@ -6,7 +6,6 @@ module.exports = (app, io) => {
 
     let ctrl = new UsersController(io)
 
-    // Création des différentes "routes" (API) que le serveur met à disposition
     app.get('/users', (req, res, next) => {
         return ctrl.find(req, res, next)
     })
