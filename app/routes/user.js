@@ -7,10 +7,20 @@ module.exports = (app, io) => {
     let ctrl = new UsersController()
 
     var numClients = 0;
-    
+
     io.on('connection', (socket) => {
         ctrl._onConnection(socket)
     });
+
+    io.on('play', (socket) => {
+      console.log('play');
+    });
+
+    io.on('otherInfo', (socket) => {
+      console.log('otherInfo');
+    });
+
+
     let nsp = io.of('/tictactoe');
     nsp.on('connection', (socket) => {
         ctrl._onSpace(socket)

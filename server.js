@@ -9,7 +9,7 @@ let morgan = require('morgan')
 let routes = require('./app/routes')
 let cors = require('cors')
 const ENV = require('./config/env')
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 9000
 
 app.use(express.static(__dirname + '/public'))
 

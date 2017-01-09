@@ -12,6 +12,14 @@ class UsersController extends Controller {
 
     _onSpace(socket) {
         console.log('user Connected');
+
+        this.usersInfos = []
+
+        socket.on('userInfos', (userInfo) => {
+            userInfo.socketId = socket.id
+            this.usersInfos.push(userInfo)
+        })
+
         socket.on('disconnect', () => {
             console.log("Disconnected")
             socket.disconnect(true)

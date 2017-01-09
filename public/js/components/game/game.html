@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             Joueur 1 : {{$ctrl.currentUser.name}}
+            <br />
             Joueur 2 : {{$ctrl.otherUser.name}}
             <div ng-repeat="tac in $ctrl.tic track by $index">
                 <div class="col-xs-4 thumbnail" ng-click="$ctrl.click($parent.$index, $index)" ng-repeat="toe in tac track by $index">
