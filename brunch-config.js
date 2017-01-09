@@ -40,9 +40,11 @@ exports.config = {
     },
     plugins: {
         copycat: {
-            "js": ['node_modules/angular/angular.min.js',
-                'node_modules/angular-ui-router/release/angular-ui-router.min.js'
+            "js": [ 'node_modules/angular/angular.min.js',
+                    'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+                    'node_modules/angular-cookies/angular-cookies.min.js'
             ],
+            "css":'node_modules/bootstrap/dist/css/bootstrap.min.css',
             verbose: true,
             onlyChanged: true
         },
