@@ -2,7 +2,7 @@
     'use strict'
     app.component('login', {
         templateUrl: 'js/components/login/login.html',
-        controller: [function() {
+        controller: ['usersService', '$state', function(usersService, $state) {
             angular.extend(this, {
                 $onInit() {
 
@@ -11,6 +11,16 @@
                     usersService.connect(this.user).then((res) => {
                         $state.go('app.game').then(() => {
                             $state.reload()
+                        })
+                    })
+                },
+                // add User
+                add() {
+                    usersService.add(this.newUser).then((res) => {
+                        usersService.connect(this.newUser).then((res) => {
+                            $state.go('app.game').then(() => {
+                                $state.reload()
+                            })
                         })
                     })
                 }

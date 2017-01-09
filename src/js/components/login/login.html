@@ -1,10 +1,12 @@
-<h1>Login</h1>
+<div class="page-header">
+    <h1>Login</h1>
+</div>
 <!-- Prelogin -->
 <section id="prelogin">
     <div class="container">
-        <div class="row center-align">
-            <a class="waves-effect waves-light btn" ng-click="login">Login</a>
-            <a class="waves-effect waves-light btn" ng-click="register">Register</a>
+        <div class="row text-align">
+            <a class="btn btn-primary" ng-click="login = !login">Login</a>
+            <a class="btn btn-primary" ng-click="register = !register">Register</a>
         </div>
     </div>
 </section>
@@ -12,27 +14,23 @@
 <!-- Login -->
 <section ng-if="login">
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <a ui-sref="app.prelogin">
-                    <button class="btn btn-info">Back</button>
-                </a>
-            </div>
-        </div>
         <form name="login">
-            <div class="row center-align">
-                <h3>Login</h3>
-                <div class="input-field col s8 offset-s2">
-                    <input type="text" ng-model="$ctrl.user.email" required>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Login</h3>
+                </div>
+                <div class="input-field col-sm-12">
                     <label for="Email">Email</label>
+                    <input type="text" ng-model="$ctrl.user.email" required>
+
                 </div>
-                <div class="input-field col s8 offset-s2">
-                    <input type="text" ng-model="$ctrl.user.password" required>
+                <div class="input-field col-sm-12">
                     <label for="Password">Password</label>
+                    <input type="text" ng-model="$ctrl.user.password" required>
                 </div>
-                <div class="col s12">
-                    <button class="btn btn-info white" ng-disabled="login.$invalid">
-                        <a ng-click="$ctrl.connect($ctrl.user)">Connexion</a>
+                <div class="col-sm-12">
+                    <button class="btn btn-success" ng-disabled="login.$invalid" ng-click="$ctrl.connect($ctrl.user)">
+                        Connexion
                     </button>
                 </div>
             </div>
@@ -42,35 +40,26 @@
 <!-- Register -->
 <section ng-if="register">
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <a ui-sref="app.prelogin">
-                    <button class="btn btn-info">Back</button>
-                </a>
-            </div>
-        </div>
         <form name="newUserForm">
-            <div class="row center-align">
+            <div class="row">
                 <h3>Register</h3>
                 <div class="col s12">
                     <div class="input-field col s6">
-                        <input id="Name" type="text" ng-model="$ctrl.newUser.name" required>
                         <label for="Name">Name</label>
+                        <input id="Name" type="text" ng-model="$ctrl.newUser.name" required>
                     </div>
                     <div class="input-field col s6">
-                        <input id="Email" type="text" ng-model="$ctrl.newUser.email" required>
                         <label for="Email">Email</label>
+                        <input id="Email" type="text" ng-model="$ctrl.newUser.email" required>
                     </div>
                     <div class="input-field col s6">
-                        <input id="Password" type="text" ng-model="$ctrl.newUser.password" required>
                         <label for="Password">Password</label>
+                        <input id="Password" type="text" ng-model="$ctrl.newUser.password" required>
                     </div>
                 </div>
                 <div class="col s12">
-                    <button class="btn btn-info white" ng-disabled="newUserForm.$invalid">
-                        <a ng-click="$ctrl.add($ctrl.newUser)">
+                    <button class="btn btn-success" ng-disabled="newUserForm.$invalid" ng-click="$ctrl.add($ctrl.newUser)">
                             Create Account
-                        </a>
                     </button>
                 </div>
             </div>
