@@ -13,21 +13,21 @@ module.exports = (app, io) => {
     });
 
     io.on('play', (socket) => {
-      console.log('play');
+        console.log('play');
     });
-
-    io.on('otherInfo', (socket) => {
-      console.log('otherInfo');
-    });
-
 
     let nsp = io.of('/tictactoe');
+
     nsp.on('connection', (socket) => {
+
         ctrl._onSpace(socket)
         numClients++;
         nsp.emit('stats', {
             numClients: numClients
         });
+
+        console.log('user Connected');
+
 
         socket.on('disconnect', function() {
             numClients--;

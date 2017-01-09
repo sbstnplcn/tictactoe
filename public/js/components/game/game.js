@@ -9,6 +9,7 @@
                     //if disconnect, go to login page
                     usersService.getCurrent().then((user) => {
                         this.currentUser = user
+                        socket.emit('userInfos', (this.currentUser))
                     }).catch(() => {
                         $state.go('app.login')
                     })
@@ -18,13 +19,15 @@
                         if (this.currentUser) socket.emit('userInfos', this.currentUser)
                     })
 
-                    socket.on('userInfos', (otherUser) => {
-                        console.log(`Infos :   ${otherUser.name} ${otherUser.socketId}`)
-                        this.otherUser = otherUser
+                    socket.on('allUsers', (OtherUser) => {
+                        console.log(`Infos :   ${OtherUser.name} ${OtherUser.socketId}`)
+                        console.log(OtherUser);
                     })
 
                     this.click = (ptidx, idx) => {
-                        socket.on('play', (data) => console.log(data))
+                        socket.on('play', (data) => {
+                            console.log(data)
+                        })
                         this.tic[ptidx][idx].value = 'x'
                     }
 

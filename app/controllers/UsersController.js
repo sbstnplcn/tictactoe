@@ -11,22 +11,15 @@ class UsersController extends Controller {
     }
 
     _onSpace(socket) {
-        console.log('user Connected');
-
-        this.usersInfos = []
+        console.log('iTest')
+        let usersInfos = []
 
         socket.on('userInfos', (userInfo) => {
+            console.log('obj');
             userInfo.socketId = socket.id
-            this.usersInfos.push(userInfo)
+            usersInfos.push(userInfo)
+            socket.emit('allUsers', (usersInfos))
         })
-
-        socket.on('disconnect', () => {
-            console.log("Disconnected")
-            socket.disconnect(true)
-        })
-    }
-    _onConnection(socket) {
-        console.log('Connection');
     }
 
     findById(req, res, next) {
