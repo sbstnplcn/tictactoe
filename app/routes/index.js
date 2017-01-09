@@ -4,7 +4,6 @@ let express = require('express')
 
 module.exports = (io) => {
     const ROUTER = express.Router()
-
     fs.readdir('./app/routes', (error, files) => {
 
         if (error)

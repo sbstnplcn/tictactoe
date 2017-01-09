@@ -1,9 +1,9 @@
 ((app) => {
     'use strict'
-})(angular.module('app', [
-    'ui.router',
-    'ngCookies',
-    'app.views',
+})(require('angular').module('app', [
+    require('angular-ui-router'),
+    require('angular-cookies'),
+
     'app.config',
     'app.services',
     'app.login',

@@ -1,51 +1,53 @@
 'use strict'
 exports.config = {
     paths: {
-        watched: ['src'],
+        watched: ['public'],
         public: 'public'
     },
     files: {
         javascripts: {
             joinTo: {
-                'js/app.min.js': /^src\/js/
+                'js/vendor.min.js': /^node_modules/,
+                'js/app.min.js': /^public\/js/
             },
             order: {
                 before: [
-                    'src/js/app.js',
-                    'src/js/**/*.md.js',
-                    'src/js/components/**/*.js'
+                    'public/js/app.js',
+                    'public/js/**/*.md.js',
+                    'public/js/components/**/*.js'
                 ]
             }
         },
         stylesheets: {
             joinTo: {
-                'css/app.min.css': /^src\/scss/
+                'css/app.min.css': /^public\/scss/
             }
         },
-        templates: {
-            joinTo: {
-                'js/templates.js': /^src\/js/
-            }
-        }
+        // templates: {
+        //     joinTo: {
+        //         'js/templates.js': /^src\/js/
+        //     }
+        // }
     },
     npm: {
-        enabled: false
+        enabled: true,
+        compilers: ['angular', 'angular-ui-router', 'angular-cookies']
     },
     conventions: {
         assets: /static[\\/]/
     },
     modules: {
         wrapper: false,
-        definition: false
+        definition: 'commonjs'
     },
     plugins: {
         copycat: {
-            "js": [ 'node_modules/angular/angular.min.js',
-                    'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-                    'node_modules/angular-cookies/angular-cookies.min.js',
-                    'node_modules/socket.io/lib/socket.js',
-                    'node_modules/socket.io-client/dist/socket.io.min.js'
-            ],
+            // "js": [ 'node_modules/angular/angular.min.js',
+            //         'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+            //         'node_modules/angular-cookies/angular-cookies.min.js',
+            //         'node_modules/socket.io/lib/socket.js',
+            //         'node_modules/socket.io-client/dist/socket.io.min.js'
+            // ],
             "css":'node_modules/bootstrap/dist/css/bootstrap.min.css',
             verbose: true,
             onlyChanged: true
@@ -65,10 +67,10 @@ exports.config = {
             sourceMapEmbed: true
         },
         /*jshint -W106 */
-        angular_templates: {
-            module: 'app.views',
-            path_transform: (path) => path.replace('src/', '')
-        }
+        // angular_templates: {
+        //     module: 'app.views',
+        //     path_transform: (path) => path.replace('src/', '')
+        // }
         /*jshint +W106 */
     },
     overrides: {

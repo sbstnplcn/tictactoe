@@ -6,33 +6,8 @@ const USER = require('../models/user')
 
 class UsersController extends Controller {
 
-    constructor(io) {
+    constructor() {
         super(USER)
-        this.io = io
-        var numClients = 0;
-        this.io.on('connection', (socket) => {
-            this._onConnection(socket)
-        });
-        let nsp = io.of('/tictactoe');
-        nsp.on('connection', (socket) => {
-            this._onSpace(socket)
-            numClients++;
-            nsp.emit('stats', {
-                numClients: numClients
-            });
-
-            socket.on('disconnect', function() {
-                numClients--;
-                nsp.emit('stats', {
-                    numClients: numClients
-                });
-                console.log(numClients)
-                nsp.emit('disconnect', {
-                    id: socket.id
-                });
-            });
-
-        })
     }
 
     _onSpace(socket) {

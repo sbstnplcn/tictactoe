@@ -4,6 +4,7 @@
         var socket = io.connect('http://localhost:8000/tictactoe');
         return {
             on(eventName, callback) {
+              console.log(eventName)
                 socket.on(eventName, function() {
                     var args = arguments;
                     $rootScope.$apply(function() {
@@ -12,6 +13,7 @@
                 });
             },
             emit(eventName, data, callback) {
+                debugger
                 socket.emit(eventName, data, function() {
                     var args = arguments;
                     $rootScope.$apply(function() {

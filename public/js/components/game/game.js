@@ -2,7 +2,7 @@
     'use strict'
     app.component('game', {
         templateUrl: 'js/components/game/game.html',
-        controller: ['usersService','$state', function(usersService, $state) {
+        controller: ['usersService','$state', 'socket', function(usersService, $state, socket) {
             angular.extend(this, {
                 $onInit() {
 

@@ -4,7 +4,33 @@ let UsersController = require('../controllers/UsersController')
 
 module.exports = (app, io) => {
 
-    let ctrl = new UsersController(io)
+    let ctrl = new UsersController()
+
+    var numClients = 0;
+    
+    io.on('connection', (socket) => {
+        ctrl._onConnection(socket)
+    });
+    let nsp = io.of('/tictactoe');
+    nsp.on('connection', (socket) => {
+        ctrl._onSpace(socket)
+        numClients++;
+        nsp.emit('stats', {
+            numClients: numClients
+        });
+
+        socket.on('disconnect', function() {
+            numClients--;
+            nsp.emit('stats', {
+                numClients: numClients
+            });
+            console.log(numClients)
+            nsp.emit('disconnect', {
+                id: socket.id
+            });
+        });
+
+    })
 
     app.get('/users', (req, res, next) => {
         return ctrl.find(req, res, next)
