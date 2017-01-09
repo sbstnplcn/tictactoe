@@ -2,7 +2,7 @@
 let fs = require('fs')
 let express = require('express')
 
-module.exports = () => {
+module.exports = (io) => {
     const ROUTER = express.Router()
 
     fs.readdir('./app/routes', (error, files) => {
@@ -16,7 +16,7 @@ module.exports = () => {
                     // do not require index.js (this file)
                 if (route !== 'index') {
                     // require the controller
-                    require('./' + route)(ROUTER)
+                    require('./' + route)(ROUTER, io)
                 }
             })
 

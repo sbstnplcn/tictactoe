@@ -38,6 +38,7 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "sass-brunch": "^2.9.0",
+    "socket.io": "^1.7.2",
     "uglify-js-brunch": "^2.0.1"
   },
   "devDependencies": {}

@@ -1,1 +1,17 @@
-<h1>Game</h1>
+<a class="btn btn-warning logout" ng-click="$ctrl.disconnect()">Logout</a>
+<div class="page-header">
+    <h1>Game</h1>
+</div>
+
+<section id="game">
+    <div class="container">
+        <div class="row">
+            Joueur 1 : {{$ctrl.currentUser.name}}
+            Joueur 2 : {{$ctrl.otherUser.name}}
+            <div ng-repeat="tac in $ctrl.tic track by $index">
+                <div class="col-xs-4 thumbnail" ng-click="$ctrl.click($parent.$index, $index)" ng-repeat="toe in tac track by $index">
+                    <h1 class="toe">{{toe.value}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
