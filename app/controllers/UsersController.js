@@ -10,18 +10,6 @@ class UsersController extends Controller {
         super(USER)
     }
 
-    _onSpace(socket) {
-        console.log('iTest')
-        let usersInfos = []
-
-        socket.on('userInfos', (userInfo) => {
-            console.log('obj');
-            userInfo.socketId = socket.id
-            usersInfos.push(userInfo)
-            socket.emit('allUsers', (usersInfos))
-        })
-    }
-
     findById(req, res, next) {
         this.model.findById(req.params.id).exec((err, document) => {
             if (err) next(err)

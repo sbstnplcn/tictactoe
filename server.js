@@ -30,7 +30,6 @@ app.use(methodOverride('X-HTTP-Method-Override'))
 let server = http.Server(app)
 let io = require('socket.io')(server)
 app.use('/api', routes(io))
-
 server.listen(port)
 console.log(`server listening on port ${port}`)
 

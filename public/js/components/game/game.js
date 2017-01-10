@@ -9,24 +9,27 @@
                     //if disconnect, go to login page
                     usersService.getCurrent().then((user) => {
                         this.currentUser = user
-                        socket.emit('userInfos', (this.currentUser))
+                        socket.emit('userInfos', this.currentUser)
                     }).catch(() => {
                         $state.go('app.login')
                     })
 
-                    socket.on('stats', (data) => {
-                        console.log('Joueurs:', data.numClients)
-                        if (this.currentUser) socket.emit('userInfos', this.currentUser)
+                    // Get Player 2
+                    socket.on('allUsers', (OtherUser) => {
+                        this.otherUser = OtherUser.filter((a) => {
+                            return a._id !== this.currentUser._id
+                        })
                     })
 
-                    socket.on('allUsers', (OtherUser) => {
-                        console.log(`Infos :   ${OtherUser.name} ${OtherUser.socketId}`)
-                        console.log(OtherUser);
+                    // Play
+                    socket.on('playValue', function() {
+                        console.log(ptidx, idx)
                     })
 
                     this.click = (ptidx, idx) => {
-                        socket.on('play', (data) => {
-                            console.log(data)
+                        socket.emit('play', {
+                            ptidx,
+                            idx
                         })
                         this.tic[ptidx][idx].value = 'x'
                     }
