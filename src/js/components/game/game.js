@@ -8,24 +8,33 @@
 
                     var table = [
                         [{
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }],
                         [{
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }],
                         [{
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }, {
+                            player: "",
                             value: ""
                         }]
                     ]
