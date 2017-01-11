@@ -1,53 +1,51 @@
 'use strict'
 exports.config = {
     paths: {
-        watched: ['public'],
+        watched: ['src'],
         public: 'public'
     },
     files: {
         javascripts: {
             joinTo: {
                 'js/vendor.min.js': /^node_modules/,
-                'js/app.min.js': /^public\/js/
+                'js/app.min.js': /^src\/js/
             },
             order: {
                 before: [
-                    'public/js/app.js',
-                    'public/js/**/*.md.js',
-                    'public/js/components/**/*.js'
+                    'src/js/app.js',
+                    'src/js/**/*.md.js',
+                    'src/js/components/**/*.js'
                 ]
             }
         },
         stylesheets: {
             joinTo: {
-                'css/app.min.css': /^public\/scss/
+                'css/app.min.css': /^src\/scss/
             }
         },
-        // templates: {
-        //     joinTo: {
-        //         'js/templates.js': /^src\/js/
-        //     }
-        // }
+        templates: {
+            joinTo: {
+                'js/templates.js': /^src\/js/
+            }
+        }
     },
     npm: {
-        enabled: true,
-        compilers: ['angular', 'angular-ui-router', 'angular-cookies']
+        enabled: false
     },
     conventions: {
         assets: /static[\\/]/
     },
     modules: {
         wrapper: false,
-        definition: 'commonjs'
+        definition: false
     },
     plugins: {
         copycat: {
-            // "js": [ 'node_modules/angular/angular.min.js',
-            //         'node_modules/angular-ui-router/release/angular-ui-router.min.js',
-            //         'node_modules/angular-cookies/angular-cookies.min.js',
-            //         'node_modules/socket.io/lib/socket.js',
-            //         'node_modules/socket.io-client/dist/socket.io.min.js'
-            // ],
+            "js": [ 'node_modules/angular/angular.min.js',
+                    'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+                    'node_modules/angular-cookies/angular-cookies.min.js',
+                    'node_modules/socket.io-client/dist/socket.io.min.js'
+            ],
             "css":'node_modules/bootstrap/dist/css/bootstrap.min.css',
             verbose: true,
             onlyChanged: true
@@ -67,10 +65,10 @@ exports.config = {
             sourceMapEmbed: true
         },
         /*jshint -W106 */
-        // angular_templates: {
-        //     module: 'app.views',
-        //     path_transform: (path) => path.replace('src/', '')
-        // }
+        angular_templates: {
+            module: 'app.views',
+            path_transform: (path) => path.replace('src/', '')
+        }
         /*jshint +W106 */
     },
     overrides: {

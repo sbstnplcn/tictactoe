@@ -1,0 +1,16 @@
+#game .thumbnail {
+  height: 20vh;
+  margin-bottom: 0; }
+
+#game .toe {
+  font-size: 10em;
+  margin: -10px auto;
+  width: 30%; }
+
+.logout {
+  position: fixed;
+  top: 10px;
+  right: 10px; }
+
+/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAiYS5jc3MiLAoJInNvdXJjZXMiOiBbCgkJInNyYy9zY3NzL3N0eWxlLnNjc3MiCgldLAoJIm1hcHBpbmdzIjogIkFBQUEsQUFBTSxLQUFELENBQUMsVUFBVSxDQUFDO0VBQ2IsTUFBTSxFQUFFLElBQUs7RUFDYixhQUFhLEVBQUUsQ0FBRSxHQUNwQjs7QUFFRCxBQUFNLEtBQUQsQ0FBQyxJQUFJLENBQUM7RUFDUCxTQUFTLEVBQUUsSUFBSztFQUNoQixNQUFNLEVBQUUsVUFBVztFQUNuQixLQUFLLEVBQUUsR0FBSSxHQUNkOztBQUVELEFBQUEsT0FBTyxDQUFDO0VBQ0osUUFBUSxFQUFFLEtBQU07RUFDaEIsR0FBRyxFQUFFLElBQUs7RUFDVixLQUFLLEVBQUUsSUFBSyxHQUNmIiwKCSJuYW1lcyI6IFtdCn0= */
+/*# sourceMappingURL=app.min.css.map*/

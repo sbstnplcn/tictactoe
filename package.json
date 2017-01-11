@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "brunch build",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "brunch watch --server"
   },
   "author": "sbstnplcn",
   "dependencies": {
