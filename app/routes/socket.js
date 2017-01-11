@@ -5,36 +5,11 @@ let SocketController = require('../controllers/SocketController')
 module.exports = (app, io) => {
 
     let ctrl = new SocketController(io)
-
     let usersInfos = []
-    let tic = [
-        [{
-            value: ""
-        }, {
-            value: ""
-        }, {
-            value: ""
-        }],
-        [{
-            value: ""
-        }, {
-            value: ""
-        }, {
-            value: ""
-        }],
-        [{
-            value: ""
-        }, {
-            value: ""
-        }, {
-            value: ""
-        }]
-    ]
 
     let nsp = io.of('/tictactoe');
 
     nsp.on('connection', (socket) => {
-
         socket.on('userInfos', (userInfo) => {
             userInfo.socketId = io.id
             usersInfos.push(userInfo)
@@ -42,6 +17,7 @@ module.exports = (app, io) => {
         })
 
         socket.on('play', (socket) => {
+            socket.tic[socket.ptidx][socket.idx].value = 'o'
             nsp.emit('playValue', socket)
         });
     })
@@ -51,6 +27,4 @@ module.exports = (app, io) => {
             id: socket.id
         })
     })
-
-
 }

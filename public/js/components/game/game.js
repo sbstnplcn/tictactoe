@@ -29,6 +29,7 @@
                             value: ""
                         }]
                     ]
+
                     this.tic = table
 
                     //if disconnect, go to login page
@@ -46,23 +47,20 @@
                         })
                     })
 
-                    //emit on click
-                    this.click = (ptidx, idx) => {
-                        let tic = table
-                        tic[ptidx][idx].value = 'x'
-                        socket.emit('play', {
-                            ptidx,
-                            idx,
-                            tic
-                        })
-                    }
-
-                    // Play
-                    socket.on('playValue', function(socket) {
-                        table = socket.tic
-                        console.log(table);
+                    // receive new table
+                    socket.on('playValue', (socket) => {
+                        this.tic = socket.tic
                     })
-
+                },
+                //emit on click
+                click(ptidx, idx) {
+                    let tic = this.tic
+                    tic[ptidx][idx].value = 'x'
+                    socket.emit('play', {
+                        ptidx,
+                        idx,
+                        tic
+                    })
                 },
                 disconnect() {
                     usersService.disconnect().then((res) => {
