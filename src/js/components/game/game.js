@@ -2,43 +2,12 @@
     'use strict'
     app.component('game', {
         templateUrl: 'js/components/game/game.html',
-        controller: ['usersService', '$state', 'socket', '$scope', function(usersService, $state, socket, $scope) {
+        controller: ['usersService', '$state', 'socket', '$scope', 'gameFactory', function(usersService, $state, socket, $scope, gameFactory) {
             angular.extend(this, {
                 $onInit() {
 
-                    var table = [
-                        [{
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }],
-                        [{
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }],
-                        [{
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }, {
-                            player: "",
-                            value: ""
-                        }]
-                    ]
-
+                    //init table
+                    let table = gameFactory.table
                     this.tic = table
 
                     //if disconnect, go to login page
@@ -58,18 +27,22 @@
 
                     // receive new table
                     socket.on('playValue', (socket) => {
+                        socket.tic[socket.ptidx][socket.idx].player == this.currentUser.name ?
+                            socket.tic[socket.ptidx][socket.idx].value = 'x' :
+                            socket.tic[socket.ptidx][socket.idx].value = 'o'
                         this.tic = socket.tic
                     })
-                },
-                //emit on click
-                click(ptidx, idx) {
-                    let tic = this.tic
-                    tic[ptidx][idx].value = 'x'
-                    socket.emit('play', {
-                        ptidx,
-                        idx,
-                        tic
-                    })
+                    //emit on click
+                    this.click = (ptidx, idx) => {
+                        let tic = this.tic
+                        tic[ptidx][idx].value = 'x'
+                        tic[ptidx][idx].player = this.currentUser.name
+                        socket.emit('play', {
+                            ptidx,
+                            idx,
+                            tic
+                        })
+                    }
                 },
                 disconnect() {
                     usersService.disconnect().then((res) => {

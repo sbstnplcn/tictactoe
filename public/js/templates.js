@@ -10,7 +10,7 @@
     }
 
     module.run(["$templateCache", function($templateCache) {
-        $templateCache.put('js/components/game/game.html', '<a class=\"btn btn-warning logout\" ng-click=\"$ctrl.disconnect()\">Logout</a>\n<div class=\"page-header\">\n    <h1>Game</h1>\n</div>\n\n<section id=\"game\">\n    <div class=\"container\">\n        <div class=\"row\">\n            Joueur 1 : {{$ctrl.currentUser.name}}\n            <br />\n            Joueur 2 : {{$ctrl.otherUser[0].name || \'Waiting for user 2\'}}\n            <div ng-repeat=\"tac in $ctrl.tic track by $index\">\n                <div class=\"col-xs-4 thumbnail\" ng-click=\"$ctrl.click($parent.$index, $index)\" ng-repeat=\"toe in tac track by $index\">\n                    <h1 class=\"toe\">{{toe.value}}</h1>\n                </div>\n            </div>\n        </div>\n    </div>\n');
+        $templateCache.put('js/components/game/game.html', '<a class=\"btn btn-warning logout\" ng-click=\"$ctrl.disconnect()\">Logout</a>\n<div class=\"page-header\">\n    <h1>Game</h1>\n</div>\n\n<section id=\"game\">\n    <div class=\"container\">\n        <div class=\"row\">\n            Joueur 1 : {{$ctrl.currentUser.name}}\n            <br /> Joueur 2 : {{$ctrl.otherUser[0].name || \'Waiting for user 2\'}}\n            <div ng-repeat=\"tac in $ctrl.tic track by $index\">\n                <div class=\"col-xs-4 thumbnail\" ng-click=\"$ctrl.click($parent.$index, $index)\" ng-repeat=\"toe in tac track by $index\">\n                    <h1 class=\"toe\">{{toe.value}}</h1>\n                </div>\n            </div>\n            {{$ctrl.tic}}\n        </div>\n    </div>\n</section>\n');
     }]);
 })();
 (function() {

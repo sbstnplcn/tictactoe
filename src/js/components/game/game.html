@@ -7,12 +7,13 @@
     <div class="container">
         <div class="row">
             Joueur 1 : {{$ctrl.currentUser.name}}
-            <br />
-            Joueur 2 : {{$ctrl.otherUser[0].name || 'Waiting for user 2'}}
+            <br /> Joueur 2 : {{$ctrl.otherUser[0].name || 'Waiting for user 2'}}
             <div ng-repeat="tac in $ctrl.tic track by $index">
                 <div class="col-xs-4 thumbnail" ng-click="$ctrl.click($parent.$index, $index)" ng-repeat="toe in tac track by $index">
                     <h1 class="toe">{{toe.value}}</h1>
                 </div>
             </div>
+            {{$ctrl.tic}}
         </div>
     </div>
+</section>

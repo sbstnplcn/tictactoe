@@ -17,7 +17,6 @@ module.exports = (app, io) => {
         })
 
         socket.on('play', (socket) => {
-            socket.tic[socket.ptidx][socket.idx].value = 'o'
             nsp.emit('playValue', socket)
         });
     })
