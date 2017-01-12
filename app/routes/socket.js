@@ -7,22 +7,20 @@ module.exports = (app, io) => {
     let ctrl = new SocketController(io)
     let usersInfos = []
 
-    let nsp = io.of('/tictactoe');
-
-    nsp.on('connection', (socket) => {
+    io.on('connection', (socket) => {
         socket.on('userInfos', (userInfo) => {
             userInfo.socketId = io.id
             usersInfos.push(userInfo)
-            nsp.emit('allUsers', (usersInfos))
+            io.emit('allUsers', (usersInfos))
         })
 
         socket.on('play', (socket) => {
-            nsp.emit('playValue', socket)
+            io.emit('playValue', socket)
         });
     })
 
-    nsp.on('disconnect', function() {
-        nsp.emit('disconnect', {
+    io.on('disconnect', function() {
+        io.emit('disconnect', {
             id: socket.id
         })
     })
