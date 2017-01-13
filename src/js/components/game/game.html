@@ -6,14 +6,21 @@
 <section id="game">
     <div class="container">
         <div class="row">
-            Joueur 1 : {{$ctrl.currentUser.name}}
-            <br /> Joueur 2 : {{$ctrl.otherUser[0].name || 'Waiting for user 2'}}
-            <div ng-repeat="tac in $ctrl.tic track by $index">
-                <div class="col-xs-4 thumbnail" ng-click="$ctrl.click($parent.$index, $index)" ng-repeat="toe in tac track by $index">
-                    <h1 class="toe">
-                      {{toe.player !== $ctrl.currentUser.name ? toe.player == $ctrl.otherUser[0].name ? 'o' : '' : 'x' }}
-                    </h1>
+            <div class="col-xs-12">
+                Joueur 1 : {{$ctrl.currentUser.name}}
+                <br /> Joueur 2 : {{$ctrl.otherUser[0].name || 'Waiting for user 2'}}
+            </div>
+            <div class="col-xs-6 col-xs-offset-3">
+                <div ng-repeat="tac in $ctrl.tic track by $index">
+                    <div class="col-xs-4 thumbnail" ng-click="$ctrl.click($parent.$index, $index)" ng-repeat="toe in tac track by $index">
+                        <h1 class="toe">
+                          {{toe.player !== $ctrl.currentUser.name ? toe.player == $ctrl.otherUser[0].name ? 'o' : '' : 'x' }}
+                        </h1>
+                    </div>
                 </div>
+            </div>
+            <div class="col-xs-12">
+                <h3>Résultat : {{$ctrl.result}}</h3>
             </div>
         </div>
     </div>

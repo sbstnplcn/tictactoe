@@ -27,13 +27,6 @@
 
                     // receive new table
                     socket.on('playValue', (socket) => {
-                        // socket.tic.forEach((row) => {
-                        //     // console.log(socket.tic, row)
-                        //     console.log(socket.tic[socket.ptidx][socket.idx].value);
-                        //     return row[socket.idx].player == this.currentUser.name ?
-                        //         socket.tic[socket.ptidx][socket.idx].value = "x" :
-                        //         socket.tic[socket.ptidx][socket.idx].value = "o"
-                        // })
                         this.tic = socket.tic
                     })
                     //emit on click
@@ -46,6 +39,7 @@
                             tic
                         })
                     }
+
                 },
                 disconnect() {
                     usersService.disconnect().then((res) => {

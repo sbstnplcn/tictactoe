@@ -1,12 +1,14 @@
 #game .thumbnail {
     height: 20vh;
     margin-bottom: 0;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 #game .toe {
-    font-size: 10em;
-    margin: -10px auto;
-    width: 30%;
+    font-size: 7em;
+    margin: -15px auto;
+    width: 55%;
 }
 
 .logout {
